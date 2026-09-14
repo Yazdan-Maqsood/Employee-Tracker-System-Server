@@ -1,0 +1,100 @@
+Phase 1: Foundation (Days 1–2)
+Goal: Establish the architecture, database, and secure access.
+
+Day 1: Project Setup & Database Schema 
+
+Initialize the Node.js/Express backend and React frontend.
+
+Design and execute the MySQL database schema (tables for Users, Courses, Assignments, Quizzes, Submissions, Results).
+
+Set up foreign keys and relationships (e.g., linking students to specific courses).
+
+Implement basic backend routing and server setup.
+
+Day 2: Authentication & User Management
+
+Build secure login APIs using JWT (JSON Web Tokens) and bcrypt for password hashing.
+
+Create the Admin account generation logic.
+
+Develop the React login interface using Bootstrap components.
+
+Establish protected routes in React so Admin and Student views are strictly separated.
+
+
+Phase 2: Academic Core (Days 3–4)
+Goal: Get the primary academic data flowing between admins and students.
+
+Day 3: Courses Module (Admin & Student Views)
+
+Backend: Create RESTful APIs for Admins to create, read, update, and delete (CRUD) courses.
+
+Frontend: Build the Admin dashboard to manage courses and assign them to students.
+
+Frontend: Build the Student dashboard where they can view their assigned courses.
+
+Day 4: Study Materials & File Handling
+
+Implement middleware (like Multer) in Node.js to handle file uploads safely.
+
+Build the interface for Admins to upload PDFs, docs, or links as course materials.
+
+Create the Student interface to download or view these resources.
+
+
+Phase 3: Assessment System (Days 5–7)
+Goal: Implement the interactive evaluation tools.
+
+Day 5: Assignment Module
+
+Develop the Admin feature to create assignments and set deadlines.
+
+Build the Student upload portal for assignment submissions.
+
+Ensure the database correctly links the submitted file to the specific student and assignment ID.
+
+Day 6: Quiz Module (Creation & Attempt Engine)
+
+Create the Admin interface to input quiz questions, multiple-choice options, and define the correct answers.
+
+Build the Student quiz-taking interface. Implement a simple frontend timer and ensure answers are submitted securely to the backend.
+
+Day 7: Evaluation & Grading
+
+Develop the backend logic to automatically grade quizzes upon submission.
+
+Create the Admin review panel to manually grade submitted assignment files and leave feedback.
+
+Update the Student dashboard to display these grades and feedback.
+
+
+Phase 4: Communication (Day 8)
+Goal: Keep users informed and organized.
+
+Day 8: Announcements & Notifications
+
+Build the CRUD system for Admins to post global or course-specific announcements.
+
+Implement the notification logic. This can be handled via simple database triggers or backend logic that checks for upcoming deadlines (e.g., assignments due within 24 hours) and pushes an alert to the Student UI.
+
+Design a "Notification Bell" or alert banner in the React frontend using Bootstrap alerts.
+
+
+Phase 5: Analytics & Wrap-up (Days 9–10)
+Goal: Finalize data visualization and ensure system stability.
+
+Day 9: Analytics, Charts & Results
+
+Aggregate student grades in the backend to calculate overall performance.
+
+Integrate a charting library (like Chart.js or Recharts) into the React frontend to display student performance visually.
+
+Build the functionality for students to download a compiled result report.
+
+Day 10: Testing, Debugging & Polish
+
+Conduct end-to-end testing of all user flows (login -> view course -> submit assignment -> get graded -> view result).
+
+Fix any UI inconsistencies or responsive design issues on mobile views.
+
+Clean up code, ensure database queries are optimized, and prepare the project for deployment or final presentation.

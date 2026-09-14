@@ -1,0 +1,8 @@
+[03-Jul-2026 09:34:21 Asia/Karachi] PHP Fatal error:  Trait "Psr\Log\LoggerAwareTrait" not found in /home/customer/www/dt-attendance-system.desired-techs.com/public_html/dt-backend/vendor/pusher/src/Pusher.php on line 15
+[03-Jul-2026 09:35:01 Asia/Karachi] PHP Fatal error:  Trait "Psr\Log\LoggerAwareTrait" not found in /home/customer/www/dt-attendance-system.desired-techs.com/public_html/dt-backend/vendor/pusher/src/Pusher.php on line 15
+[03-Jul-2026 09:38:19 Asia/Karachi] PHP Fatal error:  Trait "Psr\Log\LoggerAwareTrait" not found in /home/customer/www/dt-attendance-system.desired-techs.com/public_html/dt-backend/vendor/pusher/src/Pusher.php on line 15
+[03-Jul-2026 09:38:42 Asia/Karachi] PHP Fatal error:  Trait "Psr\Log\LoggerAwareTrait" not found in /home/customer/www/dt-attendance-system.desired-techs.com/public_html/dt-backend/vendor/pusher/src/Pusher.php on line 15
+[03-Jul-2026 09:38:47 Asia/Karachi] PHP Fatal error:  Trait "Psr\Log\LoggerAwareTrait" not found in /home/customer/www/dt-attendance-system.desired-techs.com/public_html/dt-backend/vendor/pusher/src/Pusher.php on line 15
+[03-Jul-2026 09:39:34 Asia/Karachi] PHP Fatal error:  Trait "Psr\Log\LoggerAwareTrait" not found in /home/customer/www/dt-attendance-system.desired-techs.com/public_html/dt-backend/vendor/pusher/src/Pusher.php on line 15
+[03-Jul-2026 09:39:55 Asia/Karachi] PHP Fatal error:  Trait "Psr\Log\LoggerAwareTrait" not found in /home/customer/www/dt-attendance-system.desired-techs.com/public_html/dt-backend/vendor/pusher/src/Pusher.php on line 15
+[03-Jul-2026 09:39:56 Asia/Karachi] PHP Fatal error:  Trait "Psr\Log\LoggerAwareTrait" not found in /home/customer/www/dt-attendance-system.desired-techs.com/public_html/dt-backend/vendor/pusher/src/Pusher.php on line 15

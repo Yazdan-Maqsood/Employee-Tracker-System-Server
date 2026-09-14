@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Full Stack Developer • Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      background: #030712;
+      color: #e2e8f0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .logo, .skill-name {
+      font-weight: 700;
+    }
+
+    /* Dynamic animated background */
+    .bg-ambient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 35%),
+        radial-gradient(circle at 90% 15%, rgba(20, 184, 166, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(250, 204, 21, 0.07) 0%, transparent 35%),
+        radial-gradient(circle at 25% 60%, rgba(45, 212, 191, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 75% 45%, rgba(34, 211, 238, 0.05) 0%, transparent 38%);
+      pointer-events: none;
+      z-index: 0;
+      animation: ambientFloat 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes ambientFloat {
+      0% { opacity: 0.7; transform: scale(1) rotate(0deg); }
+      33% { opacity: 1; transform: scale(1.08) rotate(1deg); }
+      66% { opacity: 0.85; transform: scale(1.03) rotate(-0.5deg); }
+      100% { opacity: 0.9; transform: scale(1.06) rotate(1deg); }
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ---------- Animations ---------- */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(45px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatSlow {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.3), 0 0 80px rgba(20, 184, 166, 0.15); }
+      50% { box-shadow: 0 0 70px rgba(16, 185, 129, 0.5), 0 0 120px rgba(250, 204, 21, 0.25); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { border-color: rgba(16, 185, 129, 0.3); }
+      50% { border-color: rgba(250, 204, 21, 0.5); }
+    }
+
+    .fade-up {
+      animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.35s; }
+    .delay-4 { animation-delay: 0.5s; }
+    .delay-5 { animation-delay: 0.65s; }
+    .delay-6 { animation-delay: 0.8s; }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      font-size: 2.1rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #10b981, #14b8a6, #facc15);
+      background-size: 200% 200%;
+      animation: gradientShift 5s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.8rem;
+      list-style: none;
+      backdrop-filter: blur(20px);
+      background: rgba(16, 185, 129, 0.03);
+      padding: 0.8rem 2.2rem;
+      border-radius: 50px;
+      border: 1px solid rgba(16, 185, 129, 0.15);
+    }
+
+    .nav-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      position: relative;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #10b981, #facc15);
+      transition: 0.3s ease;
+      border-radius: 4px;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      min-height: 85vh;
+      padding: 2rem 0 5rem;
+    }
+
+    .hero-text {
+      flex: 1 1 520px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(3rem, 7.5vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 1.4rem;
+      letter-spacing: -1.5px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981, #14b8a6, #facc15);
+      background-size: 200% 200%;
+      animation: gradientShift 4s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: white;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(16, 185, 129, 0.6);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(16, 185, 129, 0.4);
+      color: #a7f3d0;
+      backdrop-filter: blur(5px);
+    }
+
+    .btn-outline:hover {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.25);
+    }
+
+    .hero-visual {
+      flex: 1 1 420px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .avatar-icon {
+      background: linear-gradient(145deg, rgba(6, 30, 20, 0.9), rgba(3, 20, 15, 0.95));
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: floatSlow 6s ease-in-out infinite, glowPulse 4s ease-in-out infinite;
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      position: relative;
+    }
+
+    .avatar-icon::after {
+      content: '';
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(250, 204, 21, 0.2);
+      animation: floatSlow 6s ease-in-out infinite reverse, borderGlow 3s ease-in-out infinite;
+    }
+
+    .avatar-icon i {
+      font-size: 8.5rem;
+      color: #6ee7b7;
+      filter: drop-shadow(0 0 30px rgba(16, 185, 129, 0.8));
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 2.8rem;
+      margin-bottom: 3.5rem;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 1.8rem;
+      margin: 3rem 0 5rem;
+    }
+
+    .skill-card {
+      background: rgba(6, 25, 18, 0.5);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      border-radius: 28px;
+      padding: 2.2rem 1.2rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.12), transparent 70%);
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      border-color: #10b981;
+      box-shadow: 0 25px 40px -15px rgba(16, 185, 129, 0.4);
+      background: rgba(10, 35, 25, 0.7);
+    }
+
+    .skill-card i, .skill-card .icon-text {
+      font-size: 2.8rem;
+      color: #34d399;
+      position: relative;
+      z-index: 1;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover i {
+      color: #6ee7b7;
+      text-shadow: 0 0 25px rgba(16, 185, 129, 0.8);
+    }
+
+    .skill-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #a7f3d0;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.2rem;
+      margin: 2rem 0 5rem;
+    }
+
+    .project-card {
+      background: rgba(6, 22, 16, 0.5);
+      backdrop-filter: blur(20px);
+      border-radius: 32px;
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(16, 185, 129, 0.12);
+      transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(250, 204, 21, 0.03));
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .project-card:hover::after {
+      opacity: 1;
+    }
+
+    .project-card:hover {
+      border-color: #10b981;
+      box-shadow: 0 30px 50px -20px rgba(16, 185, 129, 0.35);
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(8, 30, 22, 0.7);
+    }
+
+    .project-icon {
+      font-size: 2.8rem;
+      color: #34d399;
+      margin-bottom: 1.8rem;
+      transition: 0.3s;
+    }
+
+    .project-card:hover .project-icon {
+      color: #6ee7b7;
+      text-shadow: 0 0 30px rgba(16, 185, 129, 0.9);
+    }
+
+    .project-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .project-card p {
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tag {
+      background: rgba(16, 185, 129, 0.12);
+      padding: 0.4rem 1rem;
+      border-radius: 25px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #a7f3d0;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      transition: 0.3s;
+    }
+
+    .tag:hover {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #34d399;
+      color: #d1fae5;
+    }
+
+    /* Contact */
+    .contact-section {
+      text-align: center;
+      padding: 5rem 0 3rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin: 2.5rem 0;
+      font-size: 2rem;
+    }
+
+    .social-links a {
+      color: #94a3b8;
+      transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.04);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .social-links a:hover {
+      color: #ffffff;
+      background: rgba(16, 185, 129, 0.18);
+      border-color: #34d399;
+      transform: translateY(-6px) rotate(5deg);
+      box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), rgba(250, 204, 21, 0.2), transparent);
+      margin: 2.5rem 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        padding: 0.6rem 1.5rem;
+      }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-sub {
+        max-width: 100%;
+      }
+      .avatar-icon {
+        width: 230px;
+        height: 230px;
+        margin-top: 2.5rem;
+      }
+      .avatar-icon i {
+        font-size: 6.5rem;
+      }
+      .avatar-icon::after {
+        width: 255px;
+        height: 255px;
+      }
+      .section-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.2rem;
+      }
+      .skill-card {
+        padding: 1.5rem 0.8rem;
+      }
+      .social-links {
+        gap: 1.5rem;
+      }
+      .social-links a {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient"></div>
+  <div class="container">
+    <!-- Header -->
+    <header class="fade-up">
+      <div class="logo">&lt;dev /&gt;</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Skills</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text fade-up delay-1">
+        <h1>
+          Full Stack <br> <span class="gradient-text">Developer</span>
+        </h1>
+        <p class="hero-sub fade-up delay-2">
+          Building scalable, performant web applications with cutting-edge technologies. 
+          Transforming complex problems into elegant, intuitive solutions.
+        </p>
+        <div class="btn-group fade-up delay-3">
+          <a href="#" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+          <a href="#" class="btn btn-outline"><i class="fas fa-folder-open"></i> Explore Work</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-up delay-3">
+        <div class="avatar-icon">
+          <i class="fas fa-code"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <h2 class="section-title fade-up delay-1"><span class="gradient-text">Tech Stack</span></h2>
+    <div class="skills-grid">
+      <div class="skill-card fade-up delay-1"><i class="fab fa-html5"></i><span class="skill-name">HTML5</span></div>
+      <div class="skill-card fade-up delay-2"><i class="fab fa-css3-alt"></i><span class="skill-name">CSS3</span></div>
+      <div class="skill-card fade-up delay-2"><i class="fab fa-js"></i><span class="skill-name">JavaScript</span></div>
+      <div class="skill-card fade-up delay-2"><i class="fab fa-bootstrap"></i><span class="skill-name">Bootstrap</span></div>
+      <div class="skill-card fade-up delay-3"><i class="fab fa-react"></i><span class="skill-name">React.js</span></div>
+      <div class="skill-card fade-up delay-3"><i class="fab fa-node-js"></i><span class="skill-name">Node.js</span></div>
+      <div class="skill-card fade-up delay-3"><i class="fas fa-server"></i><span class="skill-name">Express.js</span></div>
+      <div class="skill-card fade-up delay-4"><i class="fab fa-figma"></i><span class="skill-name">Figma</span></div>
+      <div class="skill-card fade-up delay-4"><i class="fas fa-database"></i><span class="skill-name">MySQL</span></div>
+      <div class="skill-card fade-up delay-4"><i class="fas fa-leaf"></i><span class="skill-name">MongoDB</span></div>
+      <div class="skill-card fade-up delay-5"><i class="fab fa-docker"></i><span class="skill-name">Docker</span></div>
+      <div class="skill-card fade-up delay-5"><i class="fab fa-github"></i><span class="skill-name">GitHub</span></div>
+      <div class="skill-card fade-up delay-5"><i class="fab fa-react"></i><span class="skill-name">Next.js</span></div>
+    </div>
+
+    <!-- Projects -->
+    <h2 class="section-title fade-up delay-1"><span class="gradient-text">Featured Projects</span></h2>
+    <div class="projects-grid">
+      <div class="project-card fade-up delay-2">
+        <div class="project-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+        <h3>ClimateVue</h3>
+        <p>Interactive climate analytics dashboard with real-time data, built with Next.js and D3.js.</p>
+        <div class="project-tags">
+          <span class="tag">Next.js</span><span class="tag">D3.js</span><span class="tag">API</span>
+        </div>
+      </div>
+      <div class="project-card fade-up delay-3">
+        <div class="project-icon"><i class="fas fa-users-gear"></i></div>
+        <h3>CollabHub</h3>
+        <p>Real-time team collaboration platform with React, Node.js, Express & MongoDB.</p>
+        <div class="project-tags">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span>
+        </div>
+      </div>
+      <div class="project-card fade-up delay-4">
+        <div class="project-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>SecureCart</h3>
+        <p>E-commerce solution with Bootstrap, MySQL, Docker & integrated payment gateway.</p>
+        <div class="project-tags">
+          <span class="tag">Bootstrap</span><span class="tag">MySQL</span><span class="tag">Docker</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-section fade-up delay-3">
+      <h2 style="font-size: 2.5rem; margin-bottom: 0.8rem;">Let's <span class="gradient-text">Connect</span></h2>
+      <p style="color: #94a3b8; margin-bottom: 2rem; font-size: 1.1rem;">Open to exciting projects and meaningful collaborations.</p>
+      <div class="social-links">
+        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+      <hr>
+      <p style="color: #64748b; font-size: 0.9rem;">© 2026 Full Stack Developer • Built with <i class="fas fa-heart" style="color: #10b981;"></i> and precision</p>
+    </div>
+  </div>
+</body>
+</html>

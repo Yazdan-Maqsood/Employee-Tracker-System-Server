@@ -1,0 +1,67 @@
+Phase 1: Planning & Database Design (Weeks 1-2)
+Before writing any code, map out how the data flows.
+
+Define User Roles: * Applicant/Student: Uploads documents, tracks attestation status.
+
+Gazetted Officer: Views assigned documents, verifies against physical copies or digital records, approves/rejects.
+
+Board Admin: Oversees the whole system, manages officer accounts, handles final verification and dispatch.
+
+Design the Database Schema: Create tables for Users, Roles, Documents (storing file paths, upload dates, OCR extracted text), and Attestation_Requests (tracking status: Pending, Officer_Approved, Admin_Verified, Rejected).
+
+Wireframing: Sketch out the three distinct dashboards to understand the user journey.
+
+
+
+Phase 2: Core Backend & Authentication (Weeks 3-4)
+Set up the foundation so your frontend has an API to talk to.
+
+Initialize Node/Express Server: Set up your folder structure (Controllers, Routes, Models, Middleware).
+
+Implement Authentication: Build login and registration endpoints. Create middleware to protect routes based on the user's role (e.g., verifyToken and isAdmin).
+
+File Upload Setup: Configure Multer to accept PDF and image uploads securely, ensuring file size and type limits.
+
+
+
+Phase 3: Frontend Dashboards & Integration (Weeks 5-7)
+Build the React application and connect it to your backend.
+
+Setup React & Routing: Use React Router to create protected routes for the three different dashboards.
+
+Applicant Dashboard: Build forms for document submission and a status tracking table.
+
+Officer/Admin Dashboards: Create data tables to list pending requests. Build the interface for viewing a document alongside its details.
+
+State Management: Use Context API or Redux to manage user sessions and global state across the app.
+
+
+
+Phase 4: OCR Integration & Automation (Weeks 8-9)
+This is the core technical hook of your FYP.
+
+Implement the OCR Pipeline: When a student uploads a Matric or FSc certificate, route the file through your chosen OCR engine.
+
+Data Extraction: Write logic to specifically extract key data points from the OCR text (e.g., Roll Number, Name, Marks, Passing Year).
+
+Automated Cross-Checking: Compare the extracted text against the student's inputted data or existing database records. If they match, flag the document with a high "confidence score" for the officer to review faster.
+
+
+
+Phase 5: Advanced Features & Security (Weeks 10-11)
+Polish the system to make it production-ready.
+
+Digital Signatures/Stamps: Allow Gazetted Officers to append a digital signature or a watermarked stamp to the verified PDF.
+
+Notification System: Integrate basic email alerts (using Nodemailer) to notify students when their document status changes.
+
+Security Audit: Ensure SQL injection prevention (using parameterized queries in MySQL), sanitize all OCR and user inputs, and enforce secure password hashing (bcrypt).
+
+
+
+Phase 6: Final Testing & Deployment (Week 12)
+Testing: Run through the entire flow. Upload a document as a student, verify it as an officer, and finalize it as an admin. Test edge cases (e.g., blurry images failing OCR).
+
+Containerization (Optional but impressive): Dockerize your frontend, backend, and database to ensure it runs consistently on your evaluator's machine.
+
+Deployment: Host the backend on Render/Heroku, the database on a managed MySQL service (like Aiven or PlanetScale), and the frontend on Vercel or Netlify.
